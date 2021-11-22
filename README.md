@@ -51,5 +51,5 @@
 
 [CppGameDev_1]: https://github.com/yoricsv/001_2_CppHelloWorld_std17.git
 [CppGameDev_2]: https://github.com/yoricsv/001_2_CppHelloWorld_std17-O1.git
-[CppGameDev_3]: https://github.com/yoricsv/001_2_CppHelloWorld_std17-O2_.git
+[CppGameDev_3]: https://github.com/yoricsv/001_2_CppHelloWorld_std17-O2.git
 [CppGameDev_4]: https://github.com/yoricsv/001_2_CppHWRandNumber_std17-O2.git
