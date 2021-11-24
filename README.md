@@ -13,6 +13,7 @@
   - [X] **RESULT:** Application [*001.2_CppHelloWorld_std17-O1*][CppGameDev_2]
   - [X] **RESULT:** Application [*001.2_CppHelloWorld_std17-O2*][CppGameDev_3]
   - [ ] **RESULT:** Application [*001.2_CppHWRandNumber_std17-O2*][CppGameDev_4]
+  - [ ] **RESULT:** Application [*001_3_CppHWScanfAnalogue*][CppGameDev_5]
   - [ ] .3 Main game loop
   - [ ] .4 Input: keyboard, mouse, gamepad, joystick, device emulation
   - [ ] .5 OpenGL ES2.0: Initialization, extensions, getting function pointers
@@ -47,9 +48,11 @@
 * [*001.2_CppHelloWorld_std17-O1*][CppGameDev_2]
 * [*001.2_CppHelloWorld_std17-O2*][CppGameDev_3]
 * [*001.2_CppHWRandNumber_std17-O2*][CppGameDev_4]
+* [*001_3_CppHWScanfAnalogue*][CppGameDev_5]
 -->
 
 [CppGameDev_1]: https://github.com/yoricsv/001_2_CppHelloWorld_std17.git
 [CppGameDev_2]: https://github.com/yoricsv/001_2_CppHelloWorld_std17-O1.git
 [CppGameDev_3]: https://github.com/yoricsv/001_2_CppHelloWorld_std17-O2.git
 [CppGameDev_4]: https://github.com/yoricsv/001_2_CppHWRandNumber_std17-O2.git
+[CppGameDev_5]: https://github.com/yoricsv/001_3_CppScanfAnalogue.git
