@@ -1,52 +1,10 @@
 cmake_minimum_required(VERSION 3.20)
+project(Game)
 
-set( PROJECT_NAME
-        OpenGLGame
-        )
+set(CMAKE_CXX_STANDARD 17)
 
-    set( PROJECT_PROPERTIES
-            CMAKE_BUILD_TYPE            Debug
-            CMAKE_CXX_FLAGS             -O3
-            CMAKE_CXX_FLAGS             -Wall
-            CMAKE_CXX_STANDARD          17
-            CMAKE_CXX_STANDARD_REQUIRED ON
-            RUNTIME_OUTPUT_DIRECTORY    ${CMAKE_SOURCE_DIR}/out
+add_executable(Game main.cpp)
 
-            # TO SET ADDITION FLAGS --> UNCOMMENT the lines below
-            #            COMPILE_DEFINITIONS         USE_GET_LENGTH_FUNCTION    # to use GET_STRING_LENGTH function
-    )
+add_subdirectory(Engine)
 
-
-project( ${PROJECT_NAME}
-        LANGUAGES
-        CXX
-)
-add_subdirectory(engine)
-
-    set( PROJECT_SOURCE_DIR
-            ${PROJECT_NAME}/inc
-            ${PROJECT_NAME}/src
-    )
-    set( SOURCES
-            ${PROJECT_SOURCE_DIR}/main.cpp
-    )
-
-include_directories(${PROJECT_SOURCE_DIR})
-
-add_executable(
-        ${PROJECT_NAME}
-        ${PROJECT_SOURCE_DIR}/${SOURCES}
-        OpenGLGame/src/main.cpp
-        OpenGLGame/inc/main.h
-)
-
-target_link_libraries(
-        ${PROJECT_NAME}
-            SdlLink
-)
-
-set_target_properties(
-        ${PROJECT_NAME}
-        PROPERTIES
-        ${PROJECT_PROPERTIES}
-)
+target_link_libraries(Game Engine)
