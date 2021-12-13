@@ -1,8 +1,9 @@
-## [_CMAKE_][CMake] > **Step 12: Packaging Debug and Release**
+## [_GAMEDEV_][gamedev] > [_CMake_][CMake] > **Step 12**: *Packaging Debug and Release*
 
-## <p align=center>[Step 1][stp1] | [Step 2][stp2] | [Step 3][stp3] | [Step 4][stp4] | [Step 5][stp5] | [Step 6][stp6] <br/> [Step 7][stp7] | [Step 8][stp8] | [Step 9][stp9] | [Step 10][stp10] | [Step 11][stp11] | [Step 12][stp12]  </p>
+### <p align=center>[Step 1][stp1] | [Step 2][stp2] | [Step 3][stp3] | [Step 4][stp4] | [Step 5][stp5] | [Step 6][stp6] <br/> [Step 7][stp7] | [Step 8][stp8] | [Step 9][stp9] | [Step 10][stp10] | [Step 11][stp11] | [Step 12][stp12]  </p>
 
 <!--
+* [_GAMEDEV_][gamedev]
 * [_CMAKE_][CMake]
 * [Step 1][stp1]
 * [Step 2][stp2]
@@ -17,25 +18,26 @@
 * [Step 11][stp11]
 * [Step 12][stp12]
 -->
-[CMake]: ../../README.md
-[stp1]: https://github.com/yoricsv/002_CppCMake/002_1_BasicStartingPoint.git
-[stp2]: https://github.com/yoricsv/002_CppCMake/002_2_AddingLibrary.git
-[stp3]: https://github.com/yoricsv/002_CppCMake/002_3_UsageReqForLib.git
-[stp4]: https://github.com/yoricsv/002_CppCMake/002_4_InstallAndTest.git
-[stp5]: https://github.com/yoricsv/002_CppCMake/002_5_SysIntrospection.git
-[stp6]: https://github.com/yoricsv/002_CppCMake/002_6_ComFileGen.git
-[stp7]: https://github.com/yoricsv/002_CppCMake/002_7_BuildInstall.git
-[stp8]: https://github.com/yoricsv/002_CppCMake/002_8_Dashboard.git
-[stp9]: https://github.com/yoricsv/002_CppCMake/002_9_StaticShared.git
-[stp10]: https://github.com/yoricsv/002_CppCMake/002_10_GenExpression.git
-[stp11]: https://github.com/yoricsv/002_CppCMake/002_11_ExportConfig.git
-[stp12]: https://github.com/yoricsv/002_CppCMake/002_12_PackDebRel.git
+
+[gamedev]: ../../README.md
+[CMake]:   ../README.md
+[stp1]:    ../002_1_BasicStartingPoint/README.md
+[stp2]:    ../002_2_AddingLibrary/README.md
+[stp3]:    ../002_3_UsageReqForLib/README.md
+[stp4]:    ../002_4_InstallAndTest/README.md
+[stp5]:    ../002_5_SysIntrospection/README.md
+[stp6]:    ../002_6_ComFileGen/README.md
+[stp7]:    ../002_7_BuildInstall/README.md
+[stp8]:    ../002_8_Dashboard/README.md
+[stp9]:    ../002_9_StaticShared/README.md
+[stp10]:   ../002_10_GenExpression/README.md
+[stp11]:   ../002_11_ExportConfig/README.md
+[stp12]:   README.md
 
 ---
-<br/>
 <!-- ---------------------------------- * Navigation * ---------------------------------- -->
 
-# <p align = center><b>002_12_PackDebRel<b></p>
+# <p align = center><b>002_12_PackDebRel</b></p>
 
 > ***NOTE***: This example is valid for single-configuration generators and will not work for multi-configuration generators (e.g. Visual Studio).
 
@@ -46,6 +48,7 @@ First, we want to ensure that the debug and release builds use different names f
 Set `CMAKE_DEBUG_POSTFIX` near the beginning of the *top-level* ***CMakeLists.txt*** file:
 
 ### CMakeLists.txt
+
 ```cmake
 set(CMAKE_DEBUG_POSTFIX d)
 
@@ -58,6 +61,7 @@ add_library(
 And the `DEBUG_POSTFIX` property on the tutorial executable:
 
 ### CMakeLists.txt
+
 ```cmake
 add_executable(
    Tutorial
@@ -80,6 +84,7 @@ target_link_libraries(
 Let's also add version numbering to the** MathFunctions** library. In ***MathFunctions/CMakeLists.txt***, set the `VERSION` and `SOVERSION` properties:
 
 ### MathFunctions/CMakeLists.txt
+
 ```cmake
 set_property(
    TARGET
@@ -121,6 +126,7 @@ Now that both the debug and release builds are complete, we can use a custom con
 Next, use the `CPACK_INSTALL_CMAKE_PROJECTS` variable to specify which projects to install. In this case, we want to install both debug and release.
 
 ### MultiCPackConfig.cmake
+
 ```cmake
 include("release/CPackConfig.cmake")
 

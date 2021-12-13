@@ -1,8 +1,9 @@
-## [_CMAKE_][CMake] > **Step 10: Adding Generator Expressions**
+## [_GAMEDEV_][gamedev] > [_CMake_][CMake] > **Step 10**: *Adding Generator Expressions*
 
-## <p align=center>[Step 1][stp1] | [Step 2][stp2] | [Step 3][stp3] | [Step 4][stp4] | [Step 5][stp5] | [Step 6][stp6] <br/> [Step 7][stp7] | [Step 8][stp8] | [Step 9][stp9] | [Step 10][stp10] | [Step 11][stp11] | [Step 12][stp12]  </p>
+### <p align=center>[Step 1][stp1] | [Step 2][stp2] | [Step 3][stp3] | [Step 4][stp4] | [Step 5][stp5] | [Step 6][stp6] <br/> [Step 7][stp7] | [Step 8][stp8] | [Step 9][stp9] | [Step 10][stp10] | [Step 11][stp11] | [Step 12][stp12]  </p>
 
 <!--
+* [_GAMEDEV_][gamedev]
 * [_CMAKE_][CMake]
 * [Step 1][stp1]
 * [Step 2][stp2]
@@ -17,25 +18,26 @@
 * [Step 11][stp11]
 * [Step 12][stp12]
 -->
-[CMake]: ../../README.md
-[stp1]: https://github.com/yoricsv/002_CppCMake/002_1_BasicStartingPoint.git
-[stp2]: https://github.com/yoricsv/002_CppCMake/002_2_AddingLibrary.git
-[stp3]: https://github.com/yoricsv/002_CppCMake/002_3_UsageReqForLib.git
-[stp4]: https://github.com/yoricsv/002_CppCMake/002_4_InstallAndTest.git
-[stp5]: https://github.com/yoricsv/002_CppCMake/002_5_SysIntrospection.git
-[stp6]: https://github.com/yoricsv/002_CppCMake/002_6_ComFileGen.git
-[stp7]: https://github.com/yoricsv/002_CppCMake/002_7_BuildInstall.git
-[stp8]: https://github.com/yoricsv/002_CppCMake/002_8_Dashboard.git
-[stp9]: https://github.com/yoricsv/002_CppCMake/002_9_StaticShared.git
-[stp10]: https://github.com/yoricsv/002_CppCMake/002_10_GenExpression.git
-[stp11]: https://github.com/yoricsv/002_CppCMake/002_11_ExportConfig.git
-[stp12]: https://github.com/yoricsv/002_CppCMake/002_12_PackDebRel.git
+
+[gamedev]: ../../README.md
+[CMake]:   ../README.md
+[stp1]:    ../002_1_BasicStartingPoint/README.md
+[stp2]:    ../002_2_AddingLibrary/README.md
+[stp3]:    ../002_3_UsageReqForLib/README.md
+[stp4]:    ../002_4_InstallAndTest/README.md
+[stp5]:    ../002_5_SysIntrospection/README.md
+[stp6]:    ../002_6_ComFileGen/README.md
+[stp7]:    ../002_7_BuildInstall/README.md
+[stp8]:    ../002_8_Dashboard/README.md
+[stp9]:    ../002_9_StaticShared/README.md
+[stp10]:   README.md
+[stp11]:   ../002_11_ExportConfig/README.md
+[stp12]:   ../002_12_PackDebRel/README.md
 
 ---
-<br/>
 <!-- ---------------------------------- * Navigation * ---------------------------------- -->
 
-# <p align = center><b>002_10_GenExpression<b></p>
+# <p align = center><b>002_10_GenExpression</b></p>
 
 **Generator expressions** are evaluated during build system generation to produce information specific to each build configuration.
 
@@ -52,6 +54,7 @@ A common usage of **generator expressions** is to conditionally add compiler fla
 So the following code:
 
 ### CMakeLists.txt
+
 ```cmake
 # specify the C++ standard
    set(CMAKE_CXX_STANDARD          11  )
@@ -61,6 +64,7 @@ So the following code:
 Would be replaced with:
 
 ### CMakeLists.txt
+
 ```cmake
 add_library(
    tutorial_compiler_flags
@@ -75,6 +79,7 @@ target_compile_features(
 > ***NOTE***: This upcoming section will require a change to the `cmake_minimum_required()` usage in the code. The Generator Expression that is about to be used was introduced in 3.15. Update the call to require that more recent version:
 
 ### CMakeLists.txt
+
 ```cmake
 cmake_minimum_required(VERSION 3.15)
 ```
@@ -82,6 +87,7 @@ cmake_minimum_required(VERSION 3.15)
 Next we add the desired compiler warning flags that we want for our project. As warning flags vary based on the compiler we use the `COMPILE_LANG_AND_ID` generator expression to control which flags to apply given a language and a set of compiler ids as seen below:
 
 ### CMakeLists.txt
+
 ```cmake
    set(gcc_like_cxx
          "$<COMPILE_LANG_AND_ID:CXX,ARMClang,AppleClang,Clang,GNU>"

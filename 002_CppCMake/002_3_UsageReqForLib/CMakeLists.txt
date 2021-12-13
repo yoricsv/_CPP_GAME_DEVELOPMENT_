@@ -1,54 +1,49 @@
 cmake_minimum_required(VERSION 3.20)
 
-    set( PROJECT_NAME
-            CMakeBasicStartingPoint
+    set(PROJECT_NAME
+            Tutorial
     )
 
-    set( PROJECT_PROPERTIES
-            CMAKE_BUILD_TYPE            Debug
-            CMAKE_CXX_FLAGS             -O3
-            CMAKE_CXX_FLAGS             -Wall
-            CMAKE_CXX_STANDARD          17
-            CMAKE_CXX_STANDARD_REQUIRED ON
-            RUNTIME_OUTPUT_DIRECTORY    ${CMAKE_SOURCE_DIR}/out
-
-            # TO SET ADDITION FLAGS --> UNCOMMENT the lines below
-#            COMPILE_DEFINITIONS         USE_GET_LENGTH_FUNCTION    # to use GET_STRING_LENGTH function
-    )
-
-
-project( ${PROJECT_NAME}
-            LANGUAGES CXX
+project(
+    ${PROJECT_NAME}
+        VERSION 1.0
 )
 
-# Check is the project parent or subproject
-get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
+    set(CMAKE_CXX_STANDARD          17  )
+    set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-    set( PROJECT_SOURCE_DIR
-#            ${PROJECT_NAME}/inc
-            ${PROJECT_NAME}/src
-    )
-    set( SOURCES
-            main.cpp
-    )
-	set( HEADERS
-            main.h
-    )
-target_sources()
+option(
+    USE_MY_MATH
+        "Use tutorial provided math implementation"  ON
+)
 
-target_include_directories(
-		${PROJECT_NAME}
-	PRIVATE
-		${PROJECT_NAME}/inc
+if(USE_MY_MATH)
+    add_subdirectory(MathFunctions)
+    list(
+        APPEND
+            EXTRA_LIBS                                  # to collect up any optional libraries to later be linked
+                MathFunctions                           # Name of the including Library
+    )
+endif()
+
+configure_file(
+    ${PROJECT_NAME}Config.h.in
+        ${PROJECT_NAME}Config.h
 )
 
 add_executable(
-        ${PROJECT_NAME}
-             ${PROJECT_SOURCE_DIR}/${SOURCES}
+    ${PROJECT_NAME}
+        tutorial.cxx
 )
 
-set_target_properties(
+target_link_libraries(
+        Tutorial
+    PUBLIC
+        ${EXTRA_LIBS}                                   # Gather the Libraries
+)
+
+target_include_directories(
         ${PROJECT_NAME}
-    PROPERTIES
-        ${PROJECT_PROPERTIES}
+    PUBLIC
+        ${PROJECT_BINARY_DIR}                           # will find TutorialConfig.h
 )

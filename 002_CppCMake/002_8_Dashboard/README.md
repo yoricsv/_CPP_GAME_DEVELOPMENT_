@@ -1,8 +1,9 @@
-## [_CMAKE_][CMake] > **Step 8: Adding Support for a Testing Dashboard**
+## [_GAMEDEV_][gamedev] > [_CMake_][CMake] > **Step 8**: *Adding Support for a Testing Dashboard*
 
-## <p align=center>[Step 1][stp1] | [Step 2][stp2] | [Step 3][stp3] | [Step 4][stp4] | [Step 5][stp5] | [Step 6][stp6] <br/> [Step 7][stp7] | [Step 8][stp8] | [Step 9][stp9] | [Step 10][stp10] | [Step 11][stp11] | [Step 12][stp12]  </p>
+### <p align=center>[Step 1][stp1] | [Step 2][stp2] | [Step 3][stp3] | [Step 4][stp4] | [Step 5][stp5] | [Step 6][stp6] <br/> [Step 7][stp7] | [Step 8][stp8] | [Step 9][stp9] | [Step 10][stp10] | [Step 11][stp11] | [Step 12][stp12]  </p>
 
 <!--
+* [_GAMEDEV_][gamedev]
 * [_CMAKE_][CMake]
 * [Step 1][stp1]
 * [Step 2][stp2]
@@ -17,31 +18,33 @@
 * [Step 11][stp11]
 * [Step 12][stp12]
 -->
-[CMake]: ../../README.md
-[stp1]: https://github.com/yoricsv/002_CppCMake/002_1_BasicStartingPoint.git
-[stp2]: https://github.com/yoricsv/002_CppCMake/002_2_AddingLibrary.git
-[stp3]: https://github.com/yoricsv/002_CppCMake/002_3_UsageReqForLib.git
-[stp4]: https://github.com/yoricsv/002_CppCMake/002_4_InstallAndTest.git
-[stp5]: https://github.com/yoricsv/002_CppCMake/002_5_SysIntrospection.git
-[stp6]: https://github.com/yoricsv/002_CppCMake/002_6_ComFileGen.git
-[stp7]: https://github.com/yoricsv/002_CppCMake/002_7_BuildInstall.git
-[stp8]: https://github.com/yoricsv/002_CppCMake/002_8_Dashboard.git
-[stp9]: https://github.com/yoricsv/002_CppCMake/002_9_StaticShared.git
-[stp10]: https://github.com/yoricsv/002_CppCMake/002_10_GenExpression.git
-[stp11]: https://github.com/yoricsv/002_CppCMake/002_11_ExportConfig.git
-[stp12]: https://github.com/yoricsv/002_CppCMake/002_12_PackDebRel.git
+
+[gamedev]: ../../README.md
+[CMake]:   ../README.md
+[stp1]:    ../002_1_BasicStartingPoint/README.md
+[stp2]:    ../002_2_AddingLibrary/README.md
+[stp3]:    ../002_3_UsageReqForLib/README.md
+[stp4]:    ../002_4_InstallAndTest/README.md
+[stp5]:    ../002_5_SysIntrospection/README.md
+[stp6]:    ../002_6_ComFileGen/README.md
+[stp7]:    ../002_7_BuildInstall/README.md
+[stp8]:    README.md
+[stp9]:    ../002_9_StaticShared/README.md
+[stp10]:   ../002_10_GenExpression/README.md
+[stp11]:   ../002_11_ExportConfig/README.md
+[stp12]:   ../002_12_PackDebRel/README.md
 
 ---
-<br/>
 <!-- ---------------------------------- * Navigation * ---------------------------------- -->
 
-# <p align = center><b>002_8_Dashboard<b></p>
+# <p align = center><b>002_8_Dashboard</b></p>
 
 Adding support for submitting our test results to a dashboard is simple. We already defined a number of tests for our project in **Testing Support**. Now we just have to run those tests and submit them to a dashboard. To include support for dashboards we include the CTest module in our *top-level* ***CMakeLists.txt***.
 
 Replace:
 
 ### CMakeLists.txt
+
 ```cmake
 # enable testing
 enable_testing()
@@ -50,6 +53,7 @@ enable_testing()
 With:
 
 ### CMakeLists.txt
+
 ```cmake
 # enable dashboard scripting
 include(CTest)
@@ -67,6 +71,7 @@ We will also need to acquire a ***CTestConfig.cmake*** file to be placed in the 
 One has been provided for you in this directory. It would normally be downloaded from the **Settings** page of the project on the CDash instance that will host and display the test results. Once downloaded from CDash, the file should not be modified locally.
 
 ### CTestConfig.cmake
+
 ```cmake
    set(CTEST_PROJECT_NAME
          "CMakeTutorial"

@@ -1,8 +1,9 @@
-## [_CMAKE_][CMake] > **Step 4: Installing and Testing**
+## [_GAMEDEV_][gamedev] > [_CMake_][CMake] > **Step 4**: *Installing and Testing*
 
-## <p align=center>[Step 1][stp1] | [Step 2][stp2] | [Step 3][stp3] | [Step 4][stp4] | [Step 5][stp5] | [Step 6][stp6] <br/> [Step 7][stp7] | [Step 8][stp8] | [Step 9][stp9] | [Step 10][stp10] | [Step 11][stp11] | [Step 12][stp12]  </p>
+### <p align=center>[Step 1][stp1] | [Step 2][stp2] | [Step 3][stp3] | [Step 4][stp4] | [Step 5][stp5] | [Step 6][stp6] <br/> [Step 7][stp7] | [Step 8][stp8] | [Step 9][stp9] | [Step 10][stp10] | [Step 11][stp11] | [Step 12][stp12]  </p>
 
 <!--
+* [_GAMEDEV_][gamedev]
 * [_CMAKE_][CMake]
 * [Step 1][stp1]
 * [Step 2][stp2]
@@ -17,37 +18,39 @@
 * [Step 11][stp11]
 * [Step 12][stp12]
 -->
-[CMake]: ../../README.md
-[stp1]: https://github.com/yoricsv/002_CppCMake/002_1_BasicStartingPoint.git
-[stp2]: https://github.com/yoricsv/002_CppCMake/002_2_AddingLibrary.git
-[stp3]: https://github.com/yoricsv/002_CppCMake/002_3_UsageReqForLib.git
-[stp4]: https://github.com/yoricsv/002_CppCMake/002_4_InstallAndTest.git
-[stp5]: https://github.com/yoricsv/002_CppCMake/002_5_SysIntrospection.git
-[stp6]: https://github.com/yoricsv/002_CppCMake/002_6_ComFileGen.git
-[stp7]: https://github.com/yoricsv/002_CppCMake/002_7_BuildInstall.git
-[stp8]: https://github.com/yoricsv/002_CppCMake/002_8_Dashboard.git
-[stp9]: https://github.com/yoricsv/002_CppCMake/002_9_StaticShared.git
-[stp10]: https://github.com/yoricsv/002_CppCMake/002_10_GenExpression.git
-[stp11]: https://github.com/yoricsv/002_CppCMake/002_11_ExportConfig.git
-[stp12]: https://github.com/yoricsv/002_CppCMake/002_12_PackDebRel.git
+
+[gamedev]: ../../README.md
+[CMake]:   ../README.md
+[stp1]:    ../002_1_BasicStartingPoint/README.md
+[stp2]:    ../002_2_AddingLibrary/README.md
+[stp3]:    ../002_3_UsageReqForLib/README.md
+[stp4]:    README.md
+[stp5]:    ../002_5_SysIntrospection/README.md
+[stp6]:    ../002_6_ComFileGen/README.md
+[stp7]:    ../002_7_BuildInstall/README.md
+[stp8]:    ../002_8_Dashboard/README.md
+[stp9]:    ../002_9_StaticShared/README.md
+[stp10]:   ../002_10_GenExpression/README.md
+[stp11]:   ../002_11_ExportConfig/README.md
+[stp12]:   ../002_12_PackDebRel/README.md
 
 ---
-<br/>
 <!-- ---------------------------------- * Navigation * ---------------------------------- -->
 
-# <p align = center><b>002_4_InstallAndTest<b></p>
+# <p align = center><b>002_4_InstallAndTest</b></p>
 
 Now we can start adding install rules and testing support to our project.
 
 ---
-</br>
 
 ## Install Rules
+
 The install rules are fairly simple: for **MathFunctions** we want to install the library and header file and for the application we want to install the executable and configured header.
 
 So *to the end* of ***MathFunctions/CMakeLists.txt*** we add:
 
 ### MathFunctions/CMakeLists.txt
+
 ```cmake
 install(
    TARGETS
@@ -66,6 +69,7 @@ install(
 *And to the end* of the *top-level* **CMakeLists.txt** we add:
 
 ### CMakeLists.txt
+
 ```cmake
 install(
    TARGETS
@@ -75,7 +79,7 @@ install(
 )
 install(
    FILES
-      "${PROJECT_BINARY_DIR}/TutorialConfig.h"
+      ${PROJECT_BINARY_DIR}/TutorialConfig.h
    DESTINATION
       include
 )
@@ -86,6 +90,7 @@ That is all that is needed to create a basic local install of the tutorial.
 Now run the **cmake** executable or the **cmake-gui** to configure the project and then build it with your chosen build tool.
 
 Then run the install step by using the **install** option of the **cmake** command (introduced in 3.15, older versions of CMake must use `make install`) from the command line. For multi-configuration tools, don't forget to use the `--config` argument to specify the configuration. If using an IDE, simply build the `INSTALL` target. This step will install the appropriate header files, libraries, and executables.
+
 *For example*:
 
 ```bash
@@ -93,6 +98,7 @@ cmake --install .
 ```
 
 The CMake variable `CMAKE_INSTALL_PREFIX` is used to determine the root of where the files will be installed. If using the `cmake --install` command, the installation prefix can be overridden via the `--prefix` argument.
+
 *For example:*
 
 ```bash
@@ -102,12 +108,13 @@ cmake --install . --prefix "/home/myuser/installdir"
 Navigate to the install directory and verify that the installed Tutorial runs.
 
 ---
-</br>
 
 ## Testing Support
+
 Next let's test our application. At the end of the *top-level* ***CMakeLists.txt*** file we can enable testing and then add a number of basic tests to verify that the application is working correctly.
 
 ### CMakeLists.txt
+
 ```cmake
 enable_testing()
 

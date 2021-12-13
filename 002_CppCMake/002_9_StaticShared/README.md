@@ -1,8 +1,9 @@
-## [_CMAKE_][CMake] > **Step 9: Selecting Static or Shared Libraries**
+## [_GAMEDEV_][gamedev] > [_CMake_][CMake] > **Step 9**: *Selecting Static or Shared Libraries*
 
-## <p align=center>[Step 1][stp1] | [Step 2][stp2] | [Step 3][stp3] | [Step 4][stp4] | [Step 5][stp5] | [Step 6][stp6] <br/> [Step 7][stp7] | [Step 8][stp8] | [Step 9][stp9] | [Step 10][stp10] | [Step 11][stp11] | [Step 12][stp12]  </p>
+### <p align=center>[Step 1][stp1] | [Step 2][stp2] | [Step 3][stp3] | [Step 4][stp4] | [Step 5][stp5] | [Step 6][stp6] <br/> [Step 7][stp7] | [Step 8][stp8] | [Step 9][stp9] | [Step 10][stp10] | [Step 11][stp11] | [Step 12][stp12]  </p>
 
 <!--
+* [_GAMEDEV_][gamedev]
 * [_CMAKE_][CMake]
 * [Step 1][stp1]
 * [Step 2][stp2]
@@ -17,25 +18,26 @@
 * [Step 11][stp11]
 * [Step 12][stp12]
 -->
-[CMake]: ../../README.md
-[stp1]: https://github.com/yoricsv/002_CppCMake/002_1_BasicStartingPoint.git
-[stp2]: https://github.com/yoricsv/002_CppCMake/002_2_AddingLibrary.git
-[stp3]: https://github.com/yoricsv/002_CppCMake/002_3_UsageReqForLib.git
-[stp4]: https://github.com/yoricsv/002_CppCMake/002_4_InstallAndTest.git
-[stp5]: https://github.com/yoricsv/002_CppCMake/002_5_SysIntrospection.git
-[stp6]: https://github.com/yoricsv/002_CppCMake/002_6_ComFileGen.git
-[stp7]: https://github.com/yoricsv/002_CppCMake/002_7_BuildInstall.git
-[stp8]: https://github.com/yoricsv/002_CppCMake/002_8_Dashboard.git
-[stp9]: https://github.com/yoricsv/002_CppCMake/002_9_StaticShared.git
-[stp10]: https://github.com/yoricsv/002_CppCMake/002_10_GenExpression.git
-[stp11]: https://github.com/yoricsv/002_CppCMake/002_11_ExportConfig.git
-[stp12]: https://github.com/yoricsv/002_CppCMake/002_12_PackDebRel.git
+
+[gamedev]: ../../README.md
+[CMake]:   ../README.md
+[stp1]:    ../002_1_BasicStartingPoint/README.md
+[stp2]:    ../002_2_AddingLibrary/README.md
+[stp3]:    ../002_3_UsageReqForLib/README.md
+[stp4]:    ../002_4_InstallAndTest/README.md
+[stp5]:    ../002_5_SysIntrospection/README.md
+[stp6]:    ../002_6_ComFileGen/README.md
+[stp7]:    ../002_7_BuildInstall/README.md
+[stp8]:    ../002_8_Dashboard/README.md
+[stp9]:    README.md
+[stp10]:   ../002_10_GenExpression/README.md
+[stp11]:   ../002_11_ExportConfig/README.md
+[stp12]:   ../002_12_PackDebRel/README.md
 
 ---
-<br/>
 <!-- ---------------------------------- * Navigation * ---------------------------------- -->
 
-# <p align = center><b>002_9_StaticShared<b></p>
+# <p align = center><b>002_9_StaticShared</b></p>
 
 In this section we will show how the `BUILD_SHARED_LIBS` variable can be used to control the default behavior of `add_library()`, and allow control over how libraries without an explicit type (`STATIC`, `SHARED`, `MODULE` or `OBJECT`) are built.
 
@@ -46,6 +48,7 @@ Next we are going to refactor **MathFunctions** to become a real library that en
 The first step is to update the starting section of the *top-level* ***CMakeLists.txt*** to look like:
 
 ### CMakeLists.txt
+
 ```cmake
 cmake_minimum_required(VERSION 3.10)
 
@@ -105,6 +108,7 @@ Now that we have made **MathFunctions** always be used, we will need to update t
 The end result is that ***MathFunctions/CMakeLists.txt*** should look like:
 
 ### MathFunctions/CMakeLists.txt
+
 ```cmake
 # add the library that runs
 add_library(
@@ -212,6 +216,7 @@ install(
 Next, update ***MathFunctions/mysqrt.cxx*** to use the **mathfunctions** and **detail** namespaces:
 
 ### MathFunctions/mysqrt.cxx
+
 ```cpp
 #include <iostream>
 
@@ -277,6 +282,7 @@ We also need to make some changes in ***tutorial.cxx***, so that it no longer us
 Finally, update ***MathFunctions/MathFunctions.h*** to use dll export defines:
 
 ### MathFunctions/MathFunctions.h
+
 ```cpp
 #if defined(_WIN32)
    #if defined(EXPORTING_MYMATH)
@@ -298,6 +304,7 @@ namespace mathfunctions
 At this point, if you build everything, you may notice that linking fails as we are combining a static library without position independent code with a library that has position independent code. The solution to this is to explicitly set the `POSITION_INDEPENDENT_CODE` target property of SqrtLibrary to be `True` no matter the build type.
 
 ### MathFunctions/CMakeLists.txt
+
 ```cmake
 # state that SqrtLibrary need PIC when the default is shared libraries
 set_target_properties(

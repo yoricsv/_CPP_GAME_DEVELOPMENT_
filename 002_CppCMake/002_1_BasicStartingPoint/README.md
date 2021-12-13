@@ -1,6 +1,6 @@
 ## [_GAMEDEV_][gamedev] > [_CMake_][CMake] > **Step 1: A Basic Starting Point**
 
-## <p align=center>[Step 1][stp1] | [Step 2][stp2] | [Step 3][stp3] | [Step 4][stp4] | [Step 5][stp5] | [Step 6][stp6] <br/> [Step 7][stp7] | [Step 8][stp8] | [Step 9][stp9] | [Step 10][stp10] | [Step 11][stp11] | [Step 12][stp12]  </p>
+### <p align=center>[Step 1][stp1] | [Step 2][stp2] | [Step 3][stp3] | [Step 4][stp4] | [Step 5][stp5] | [Step 6][stp6] <br/> [Step 7][stp7] | [Step 8][stp8] | [Step 9][stp9] | [Step 10][stp10] | [Step 11][stp11] | [Step 12][stp12]  </p>
 
 <!--
 * [_GAMEDEV_][gamedev]
@@ -21,18 +21,18 @@
 
 [gamedev]: ../../README.md
 [CMake]:   ../README.md
-[stp1]:    002_1_BasicStartingPoint/README.md
-[stp2]:    002_2_AddingLibrary/README.md
-[stp3]:    002_3_UsageReqForLib/README.md
-[stp4]:    002_4_InstallAndTest/README.md
-[stp5]:    002_5_SysIntrospection/README.md
-[stp6]:    002_6_ComFileGen/README.md
-[stp7]:    002_7_BuildInstall/README.md
-[stp8]:    002_8_Dashboard/README.md
-[stp9]:    002_9_StaticShared/README.md
-[stp10]:   002_10_GenExpression/README.md
-[stp11]:   002_11_ExportConfig/README.md
-[stp12]:   002_12_PackDebRel/README.md
+[stp1]:    README.md
+[stp2]:    ../002_2_AddingLibrary/README.md
+[stp3]:    ../002_3_UsageReqForLib/README.md
+[stp4]:    ../002_4_InstallAndTest/README.md
+[stp5]:    ../002_5_SysIntrospection/README.md
+[stp6]:    ../002_6_ComFileGen/README.md
+[stp7]:    ../002_7_BuildInstall/README.md
+[stp8]:    ../002_8_Dashboard/README.md
+[stp9]:    ../002_9_StaticShared/README.md
+[stp10]:   ../002_10_GenExpression/README.md
+[stp11]:   ../002_11_ExportConfig/README.md
+[stp12]:   ../002_12_PackDebRel/README.md
 
 ---
 <!-- ---------------------------------- * Navigation * ---------------------------------- -->

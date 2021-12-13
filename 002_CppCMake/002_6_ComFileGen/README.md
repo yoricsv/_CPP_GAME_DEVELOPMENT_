@@ -1,8 +1,9 @@
-## [_CMAKE_][CMake] > **Step 6: Adding a Custom Command and Generated File**
+## [_GAMEDEV_][gamedev] > [_CMake_][CMake] > **Step 6**: *Adding a Custom Command and Generated File*
 
-## <p align=center>[Step 1][stp1] | [Step 2][stp2] | [Step 3][stp3] | [Step 4][stp4] | [Step 5][stp5] | [Step 6][stp6] <br/> [Step 7][stp7] | [Step 8][stp8] | [Step 9][stp9] | [Step 10][stp10] | [Step 11][stp11] | [Step 12][stp12]  </p>
+### <p align=center>[Step 1][stp1] | [Step 2][stp2] | [Step 3][stp3] | [Step 4][stp4] | [Step 5][stp5] | [Step 6][stp6] <br/> [Step 7][stp7] | [Step 8][stp8] | [Step 9][stp9] | [Step 10][stp10] | [Step 11][stp11] | [Step 12][stp12]  </p>
 
 <!--
+* [_GAMEDEV_][gamedev]
 * [_CMAKE_][CMake]
 * [Step 1][stp1]
 * [Step 2][stp2]
@@ -17,25 +18,26 @@
 * [Step 11][stp11]
 * [Step 12][stp12]
 -->
-[CMake]: ../../README.md
-[stp1]: https://github.com/yoricsv/002_CppCMake/002_1_BasicStartingPoint.git
-[stp2]: https://github.com/yoricsv/002_CppCMake/002_2_AddingLibrary.git
-[stp3]: https://github.com/yoricsv/002_CppCMake/002_3_UsageReqForLib.git
-[stp4]: https://github.com/yoricsv/002_CppCMake/002_4_InstallAndTest.git
-[stp5]: https://github.com/yoricsv/002_CppCMake/002_5_SysIntrospection.git
-[stp6]: https://github.com/yoricsv/002_CppCMake/002_6_ComFileGen.git
-[stp7]: https://github.com/yoricsv/002_CppCMake/002_7_BuildInstall.git
-[stp8]: https://github.com/yoricsv/002_CppCMake/002_8_Dashboard.git
-[stp9]: https://github.com/yoricsv/002_CppCMake/002_9_StaticShared.git
-[stp10]: https://github.com/yoricsv/002_CppCMake/002_10_GenExpression.git
-[stp11]: https://github.com/yoricsv/002_CppCMake/002_11_ExportConfig.git
-[stp12]: https://github.com/yoricsv/002_CppCMake/002_12_PackDebRel.git
+
+[gamedev]: ../../README.md
+[CMake]:   ../README.md
+[stp1]:    ../002_1_BasicStartingPoint/README.md
+[stp2]:    ../002_2_AddingLibrary/README.md
+[stp3]:    ../002_3_UsageReqForLib/README.md
+[stp4]:    ../002_4_InstallAndTest/README.md
+[stp5]:    ../002_5_SysIntrospection/README.md
+[stp6]:    README.md
+[stp7]:    ../002_7_BuildInstall/README.md
+[stp8]:    ../002_8_Dashboard/README.md
+[stp9]:    ../002_9_StaticShared/README.md
+[stp10]:   ../002_10_GenExpression/README.md
+[stp11]:   ../002_11_ExportConfig/README.md
+[stp12]:   ../002_12_PackDebRel/README.md
 
 ---
-<br/>
 <!-- ---------------------------------- * Navigation * ---------------------------------- -->
 
-# <p align = center><b>002_6_ComFileGen<b></p>
+# <p align = center><b>002_6_ComFileGen</b></p>
 
 Suppose, for the purpose of this tutorial, we decide that we never want to use the platform `log` and `exp` functions and instead would like to generate a table of precomputed values to use in the `mysqrt` function. In this section, we will create the table as part of the build process, and then compile that table into our application.
 
@@ -50,6 +52,7 @@ The next step is to add the appropriate commands to the ***MathFunctions/CMakeLi
 First, at the top of ***MathFunctions/CMakeLists.txt***, the executable for **MakeTable** is added as any other executable would be added.
 
 ### MathFunctions/CMakeLists.txt
+
 ```cmake
 add_executable(
    MakeTable
@@ -60,6 +63,7 @@ add_executable(
 Then we add a custom command that specifies how to produce Table.h by running MakeTable.
 
 ### MathFunctions/CMakeLists.txt
+
 ```cmake
 add_custom_command(
    OUTPUT
@@ -75,6 +79,7 @@ add_custom_command(
 Next we have to let CMake know that ***mysqrt.cxx*** depends on the generated file ***Table.h***. This is done by adding the generated ***Table.h*** to the list of sources for the library MathFunctions.
 
 ### MathFunctions/CMakeLists.txt
+
 ```cmake
 add_library(
    MathFunctions
@@ -86,6 +91,7 @@ add_library(
 We also have to add the current binary directory to the list of include directories so that ***Table.h*** can be found and included by ***mysqrt.cxx***.
 
 ### MathFunctions/CMakeLists.txt
+
 ```cmake
 target_include_directories(
       MathFunctions
@@ -99,6 +105,7 @@ target_include_directories(
 Now let's use the generated table. First, modify ***mysqrt.cxx*** to include ***Table.h***. Next, we can rewrite the `mysqrt` function to use the table:
 
 ### MathFunctions/mysqrt.cxx
+
 ```cpp
 double mysqrt(double x)
 {

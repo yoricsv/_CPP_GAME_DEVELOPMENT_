@@ -1,8 +1,9 @@
-## [_CMAKE_][CMake] > **Step 5: Adding System Introspection**
+## [_GAMEDEV_][gamedev] > [_CMake_][CMake] > **Step 5**: *Adding System Introspection*
 
-## <p align=center>[Step 1][stp1] | [Step 2][stp2] | [Step 3][stp3] | [Step 4][stp4] | [Step 5][stp5] | [Step 6][stp6] <br/> [Step 7][stp7] | [Step 8][stp8] | [Step 9][stp9] | [Step 10][stp10] | [Step 11][stp11] | [Step 12][stp12]  </p>
+### <p align=center>[Step 1][stp1] | [Step 2][stp2] | [Step 3][stp3] | [Step 4][stp4] | [Step 5][stp5] | [Step 6][stp6] <br/> [Step 7][stp7] | [Step 8][stp8] | [Step 9][stp9] | [Step 10][stp10] | [Step 11][stp11] | [Step 12][stp12]  </p>
 
 <!--
+* [_GAMEDEV_][gamedev]
 * [_CMAKE_][CMake]
 * [Step 1][stp1]
 * [Step 2][stp2]
@@ -17,25 +18,26 @@
 * [Step 11][stp11]
 * [Step 12][stp12]
 -->
-[CMake]: ../../README.md
-[stp1]: https://github.com/yoricsv/002_CppCMake/002_1_BasicStartingPoint.git
-[stp2]: https://github.com/yoricsv/002_CppCMake/002_2_AddingLibrary.git
-[stp3]: https://github.com/yoricsv/002_CppCMake/002_3_UsageReqForLib.git
-[stp4]: https://github.com/yoricsv/002_CppCMake/002_4_InstallAndTest.git
-[stp5]: https://github.com/yoricsv/002_CppCMake/002_5_SysIntrospection.git
-[stp6]: https://github.com/yoricsv/002_CppCMake/002_6_ComFileGen.git
-[stp7]: https://github.com/yoricsv/002_CppCMake/002_7_BuildInstall.git
-[stp8]: https://github.com/yoricsv/002_CppCMake/002_8_Dashboard.git
-[stp9]: https://github.com/yoricsv/002_CppCMake/002_9_StaticShared.git
-[stp10]: https://github.com/yoricsv/002_CppCMake/002_10_GenExpression.git
-[stp11]: https://github.com/yoricsv/002_CppCMake/002_11_ExportConfig.git
-[stp12]: https://github.com/yoricsv/002_CppCMake/002_12_PackDebRel.git
+
+[gamedev]: ../../README.md
+[CMake]:   ../README.md
+[stp1]:    ../002_1_BasicStartingPoint/README.md
+[stp2]:    ../002_2_AddingLibrary/README.md
+[stp3]:    ../002_3_UsageReqForLib/README.md
+[stp4]:    ../002_4_InstallAndTest/README.md
+[stp5]:    README.md
+[stp6]:    ../002_6_ComFileGen/README.md
+[stp7]:    ../002_7_BuildInstall/README.md
+[stp8]:    ../002_8_Dashboard/README.md
+[stp9]:    ../002_9_StaticShared/README.md
+[stp10]:   ../002_10_GenExpression/README.md
+[stp11]:   ../002_11_ExportConfig/README.md
+[stp12]:   ../002_12_PackDebRel/README.md
 
 ---
-<br/>
 <!-- ---------------------------------- * Navigation * ---------------------------------- -->
 
-# <p align = center><b>002_5_SysIntrospection<b></p>
+# <p align = center><b>002_5_SysIntrospection</b></p>
 
 Let us consider adding some code to our project that depends on features the target platform may not have. For this example, we will add some code that depends on whether or not the target platform has the `log` and `exp`* functions. Of course almost every platform has these functions but for this tutorial assume that they are not common.
 
@@ -44,6 +46,7 @@ If the platform has `log` and `exp` then we will use them to compute the square 
 Add the checks for `log` and `exp` to ***MathFunctions/CMakeLists.txt***, after the call to `target_include_directories()`:
 
 ### MathFunctions/CMakeLists.txt
+
 ```cmake
 target_include_directories(
       MathFunctions
@@ -98,6 +101,7 @@ endif()
 If available, use `target_compile_definitions()` to specify `HAVE_LOG` and `HAVE_EXP` as `PRIVATE` compile definitions.
 
 ### MathFunctions/CMakeLists.txt
+
 ```cmake
 if(HAVE_LOG AND HAVE_EXP)
    target_compile_definitions(
@@ -113,6 +117,7 @@ If `log` and `exp` are available on the system, then we will use them to compute
 (**don't forget the `#endif` before returning the result!**):
 
 ### MathFunctions/mysqrt.cxx
+
 ```cpp
 #if defined(HAVE_LOG) && defined(HAVE_EXP)
    double result = exp(log(x) * 0.5);
@@ -127,6 +132,7 @@ If `log` and `exp` are available on the system, then we will use them to compute
 We will also *need to modify* ***mysqrt.cxx*** to include `cmath`.
 
 ### MathFunctions/mysqrt.cxx
+
 ```cpp
 #include <cmath>
 ```

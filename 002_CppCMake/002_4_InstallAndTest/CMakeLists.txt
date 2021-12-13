@@ -1,54 +1,143 @@
 cmake_minimum_required(VERSION 3.20)
 
-    set( PROJECT_NAME
-            CMakeBasicStartingPoint
+    set(PROJECT_NAME
+            Tutorial
     )
 
-    set( PROJECT_PROPERTIES
-            CMAKE_BUILD_TYPE            Debug
-            CMAKE_CXX_FLAGS             -O3
-            CMAKE_CXX_FLAGS             -Wall
-            CMAKE_CXX_STANDARD          17
-            CMAKE_CXX_STANDARD_REQUIRED ON
-            RUNTIME_OUTPUT_DIRECTORY    ${CMAKE_SOURCE_DIR}/out
-
-            # TO SET ADDITION FLAGS --> UNCOMMENT the lines below
-#            COMPILE_DEFINITIONS         USE_GET_LENGTH_FUNCTION    # to use GET_STRING_LENGTH function
-    )
-
-
-project( ${PROJECT_NAME}
-            LANGUAGES CXX
+project(
+    ${PROJECT_NAME}
+        VERSION 1.0
 )
 
-# Check is the project parent or subproject
-get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
+    set(CMAKE_CXX_STANDARD          17  )
+    set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-    set( PROJECT_SOURCE_DIR
-#            ${PROJECT_NAME}/inc
-            ${PROJECT_NAME}/src
-    )
-    set( SOURCES
-            main.cpp
-    )
-	set( HEADERS
-            main.h
-    )
-target_sources()
+option(
+    USE_MY_MATH
+        "Use tutorial provided math implementation"  ON
+)
 
-target_include_directories(
-		${PROJECT_NAME}
-	PRIVATE
-		${PROJECT_NAME}/inc
+if(USE_MY_MATH)
+    add_subdirectory(MathFunctions)
+    list(
+        APPEND
+            EXTRA_LIBS                                  # to collect up any optional libraries to later be linked
+                MathFunctions                           # Name of the including Library
+    )
+endif()
+
+configure_file(
+    ${PROJECT_NAME}Config.h.in
+        ${PROJECT_NAME}Config.h
 )
 
 add_executable(
-        ${PROJECT_NAME}
-             ${PROJECT_SOURCE_DIR}/${SOURCES}
+    ${PROJECT_NAME}
+        tutorial.cxx
 )
 
-set_target_properties(
+target_link_libraries(
+        Tutorial
+    PUBLIC
+        ${EXTRA_LIBS}                                   # Gather the Libraries
+)
+
+target_include_directories(
         ${PROJECT_NAME}
+    PUBLIC
+        ${PROJECT_BINARY_DIR}                           # will find TutorialConfig.h
+)
+
+# add rules to install the application with library and header files
+install(
+    TARGETS
+        Tutorial
+    DESTINATION
+        bin                                             # output folder where will placed binary executable files
+)
+install(
+    FILES
+        ${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.h
+    DESTINATION
+        include                                         # output folder where will placed configured header files
+)
+
+# enable testing to check the application is working correctly
+enable_testing()
+
+# add the first simply test to verify that the application run
+# and nothing segfault or otherwise crash
+add_test(
+    NAME
+        Runs
+    COMMAND
+        Tutorial 25
+)
+
+# add the next one to verify that the output of the test
+# contains certain strings
+# [REMARK] printout when an incorrect number of arguments are provided
+add_test(
+    NAME
+        Usage
+    COMMAND
+        Tutorial
+)
+set_tests_properties(
+        Usage
     PROPERTIES
-        ${PROJECT_PROPERTIES}
+        PASS_REGULAR_EXPRESSION
+            "Usage:.*number"
+)
+
+# add the function DO_TEST that runs the application and
+# verifies that the computed square root is correct for given input
+function(
+    do_test
+        target arg
+            result
+)
+    add_test(
+        NAME
+            Comp${arg}
+        COMMAND
+            ${target}
+            ${arg}
+    )
+    set_tests_properties(
+            Comp${arg}
+        PROPERTIES
+            PASS_REGULAR_EXPRESSION
+                ${result}
+    )
+endfunction()
+
+# add the number of basic tests to verify
+do_test(
+    Tutorial 4
+        "4 is 2"
+)
+do_test(
+    Tutorial 9
+        "9 is 3"
+)
+do_test(
+    Tutorial 5
+        "5 is 2.236"
+)
+do_test(
+    Tutorial 7
+        "7 is 2.645"
+)
+do_test(
+    Tutorial 25
+        "25 is 5"
+)
+do_test(
+    Tutorial -25
+        "-25 is (-nan|nan|0)"
+)
+do_test(
+    Tutorial 0.0001
+        "0.0001 is 0.01"
 )

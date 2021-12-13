@@ -4,7 +4,7 @@
 > ***NOTE***: "C++ GAME DEVELOPMENT PROFFESSIONAL" *(Start 10-nov-2021)*
 
 > ***NOTE***: I don't mark topics without a description (READMEs).
-## COURSE CONTENT
+### COURSE CONTENT
 
 - [ ] **001 MICRO ENGINE**:
   - [X] _1 IDE setting up
@@ -18,9 +18,9 @@
       - [X] *Adding a Version Number and Configured Header File*
       - [X] *Specify the C++ Standard*
       - [X] *Rebuild*
-    - [ ] **Step 2**: [Adding a Library][stp2]
-    - [ ] **Step 3**: [Adding Usage Requirements for a Library][stp3]
-    - [ ] **Step 4**: [Installing and Testing][stp4]
+    - [X] **Step 2**: [Adding a Library][stp2]
+    - [X] **Step 3**: [Adding Usage Requirements for a Library][stp3]
+    - [X] **Step 4**: [Installing and Testing][stp4]
       - [X] *Install Rules*
       - [X] *Testing Support*
     - [ ] **Step 5**: [Adding System Introspection][stp5]

@@ -1,8 +1,9 @@
-## [_CMAKE_][CMake] > **Step 2: Adding a Library**
+## [_GAMEDEV_][gamedev] > [_CMake_][CMake] > **Step 2**: *Adding a Library*
 
-## <p align=center>[Step 1][stp1] | [Step 2][stp2] | [Step 3][stp3] | [Step 4][stp4] | [Step 5][stp5] | [Step 6][stp6] <br/> [Step 7][stp7] | [Step 8][stp8] | [Step 9][stp9] | [Step 10][stp10] | [Step 11][stp11] | [Step 12][stp12]  </p>
+### <p align=center>[Step 1][stp1] | [Step 2][stp2] | [Step 3][stp3] | [Step 4][stp4] | [Step 5][stp5] | [Step 6][stp6] <br/> [Step 7][stp7] | [Step 8][stp8] | [Step 9][stp9] | [Step 10][stp10] | [Step 11][stp11] | [Step 12][stp12]  </p>
 
 <!--
+* [_GAMEDEV_][gamedev]
 * [_CMAKE_][CMake]
 * [Step 1][stp1]
 * [Step 2][stp2]
@@ -17,25 +18,26 @@
 * [Step 11][stp11]
 * [Step 12][stp12]
 -->
-[CMake]: ../../README.md
-[stp1]: https://github.com/yoricsv/002_CppCMake/002_1_BasicStartingPoint.git
-[stp2]: https://github.com/yoricsv/002_CppCMake/002_2_AddingLibrary.git
-[stp3]: https://github.com/yoricsv/002_CppCMake/002_3_UsageReqForLib.git
-[stp4]: https://github.com/yoricsv/002_CppCMake/002_4_InstallAndTest.git
-[stp5]: https://github.com/yoricsv/002_CppCMake/002_5_SysIntrospection.git
-[stp6]: https://github.com/yoricsv/002_CppCMake/002_6_ComFileGen.git
-[stp7]: https://github.com/yoricsv/002_CppCMake/002_7_BuildInstall.git
-[stp8]: https://github.com/yoricsv/002_CppCMake/002_8_Dashboard.git
-[stp9]: https://github.com/yoricsv/002_CppCMake/002_9_StaticShared.git
-[stp10]: https://github.com/yoricsv/002_CppCMake/002_10_GenExpression.git
-[stp11]: https://github.com/yoricsv/002_CppCMake/002_11_ExportConfig.git
-[stp12]: https://github.com/yoricsv/002_CppCMake/002_12_PackDebRel.git
+
+[gamedev]: ../../README.md
+[CMake]:   ../README.md
+[stp1]:    ../002_1_BasicStartingPoint/README.md
+[stp2]:    README.md
+[stp3]:    ../002_3_UsageReqForLib/README.md
+[stp4]:    ../002_4_InstallAndTest/README.md
+[stp5]:    ../002_5_SysIntrospection/README.md
+[stp6]:    ../002_6_ComFileGen/README.md
+[stp7]:    ../002_7_BuildInstall/README.md
+[stp8]:    ../002_8_Dashboard/README.md
+[stp9]:    ../002_9_StaticShared/README.md
+[stp10]:   ../002_10_GenExpression/README.md
+[stp11]:   ../002_11_ExportConfig/README.md
+[stp12]:   ../002_12_PackDebRel/README.md
 
 ---
-<br/>
 <!-- ---------------------------------- * Navigation * ---------------------------------- -->
 
-# <p align = center><b>002_2_AddingLibrary<b></p>
+# <p align = center><b>002_2_AddingLibrary</b></p>
 
 Now we will add a library to our project. This library will contain our own implementation for computing the square root of a number. The executable can then use this library instead of the standard square root function provided by the compiler.
 
@@ -44,12 +46,15 @@ For this tutorial we will put the library into a subdirectory called **MathFunct
 Add the following one line ***CMakeLists.txt*** file to the **MathFunctions** directory:
 
 ### MathFunctions/CMakeLists.txt
+
 ```cmake
 add_library(MathFunctions mysqrt.cxx)
 ```
+
 To make use of the new library we will add an `add_subdirectory()` call in the top-level ***CMakeLists.txt*** file so that the library will get built. We add the new library to the executable, and add **MathFunctions** as an include directory so that the ***mysqrt.h*** header file can be found. The last few lines of the top-level ***CMakeLists.txt*** file should now look like:
 
 ### CMakeLists.txt
+
 ```cmake
 # add the MathFunctions library
 add_subdirectory(MathFunctions)
@@ -71,14 +76,15 @@ target_link_libraries(
 target_include_directories(
       Tutorial
    PUBLIC
-      "${PROJECT_BINARY_DIR}"
-      "${PROJECT_SOURCE_DIR}/MathFunctions"
+      ${PROJECT_BINARY_DIR}
+      ${PROJECT_SOURCE_DIR}/MathFunctions
 )
 ```
 
 Now let us make the **MathFunctions** library optional. While for the tutorial there really isn't any need to do so, for larger projects this is a common occurrence. The first step is to add an option to the top-level ***CMakeLists.txt*** file.
 
 ### CMakeLists.txt
+
 ```cmake
 option(
    USE_MYMATH
@@ -92,11 +98,13 @@ configure_file(
       TutorialConfig.h
 )
 ```
+
 This option will be displayed in the **cmake-gui** and **ccmake** with a default value of **ON** that can be changed by the user. This setting will be stored in the cache so that the user does not need to set the value each time they run CMake on a build directory.
 
 The next change is to make building and linking the **MathFunctions** library conditional. To do this, we will create an `if` statement which checks the value of the option. Inside the `if` block, put the `add_subdirectory()` command from above with some additional list commands to store information needed to link to the library and add the subdirectory as an include directory in the **Tutorial** *target*. The end of the *top-level* ***CMakeLists.txt*** file will now look like the following:
 
 ### CMakeLists.txt
+
 ```cmake
 if(USE_MYMATH)
    add_subdirectory(MathFunctions)
@@ -108,7 +116,7 @@ if(USE_MYMATH)
    list(
       APPEND
          EXTRA_INCLUDES
-            "${PROJECT_SOURCE_DIR}/MathFunctions"
+            ${PROJECT_SOURCE_DIR}/MathFunctions
    )
 endif()
 
@@ -129,7 +137,7 @@ target_link_libraries(
 target_include_directories(
       Tutorial
    PUBLIC
-      "${PROJECT_BINARY_DIR}"
+      ${PROJECT_BINARY_DIR}
       ${EXTRA_INCLUDES}
 )
 ```
@@ -139,6 +147,7 @@ target_include_directories(
 The corresponding changes to the source code are fairly straightforward. First, in ***tutorial.cxx***, include the ***MathFunctions.h*** header if we need it:
 
 ### tutorial.cxx
+
 ```cpp
 #ifdef USE_MYMATH
 #  include "MathFunctions.h"
@@ -148,6 +157,7 @@ The corresponding changes to the source code are fairly straightforward. First, 
 Then, in the same file, make `USE_MYMATH` control which square root function is used:
 
 ### tutorial.cxx
+
 ```cpp
 #ifdef USE_MYMATH
   const double outputValue = mysqrt(inputValue);
@@ -159,6 +169,7 @@ Then, in the same file, make `USE_MYMATH` control which square root function is 
 Since the source code now requires `USE_MYMATH` we can add it to ***TutorialConfig.h.in*** with the following line:
 
 ### TutorialConfig.h.in
+
 ```cpp
 #cmakedefine USE_MYMATH
 ```
