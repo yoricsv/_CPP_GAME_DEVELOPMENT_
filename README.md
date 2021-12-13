@@ -7,43 +7,60 @@
 ## COURSE CONTENT
 
 - [ ] **001 MICRO ENGINE**:
-  - [ ] .1 IDE setting up
-  - [ ] .2 Hello world
+  - [X] _1 IDE setting up
   - [X] **RESULT:** Application [*001.2_CppHelloWorld_std17*][CppGameDev_1]
   - [X] **RESULT:** Application [*001.2_CppHelloWorld_std17-O1*][CppGameDev_2]
   - [X] **RESULT:** Application [*001.2_CppHelloWorld_std17-O2*][CppGameDev_3]
   - [ ] **RESULT:** Application [*001.2_CppHWRandNumber_std17-O2*][CppGameDev_4]
   - [ ] **RESULT:** Application [*001.3_CppHWScanfAnalogue*][CppGameDev_5]
-  - [ ] .3 Main game loop
+  - [ ] _2 [CMake][CMake]
+    - [X] **Step 1**: [A Basic Starting Point Build and Run][stp1]
+      - [X] *Adding a Version Number and Configured Header File*
+      - [X] *Specify the C++ Standard*
+      - [X] *Rebuild*
+    - [ ] **Step 2**: [Adding a Library][stp2]
+    - [ ] **Step 3**: [Adding Usage Requirements for a Library][stp3]
+    - [ ] **Step 4**: [Installing and Testing][stp4]
+      - [X] *Install Rules*
+      - [X] *Testing Support*
+    - [ ] **Step 5**: [Adding System Introspection][stp5]
+    - [ ] **Step 6**: [Adding a Custom Command and Generated File][stp6]
+    - [ ] **Step 7**: [Packaging an Installer][stp7]
+    - [ ] **Step 8**: [Adding Support for a Testing Dashboard][stp8]
+    - [ ] **Step 9**: [Selecting Static or Shared Libraries][stp9]
+    - [ ] **Step 10**: [Adding Generator Expressions][stp10]
+    - [ ] **Step 11**: [Adding Export Configuration][stp11]
+    - [ ] **Step 12**: [Packaging Debug and Release][stp12]
+  - [ ] _3 Main game loop
   - [ ] **RESULT:** Application [*000_CppClassGame*][CppGameDev_6]
   - [ ] **RESULT:** Application [*003.1_CppOpenGL*][CppGameDev_7]
-  - [ ] .4 Input: keyboard, mouse, gamepad, joystick, device emulation
-  - [ ] .5 OpenGL ES2.0: Initialization, extensions, getting function pointers
-  - [ ] .6 Primitive rasterization, vertex shader, fragment shader
-  - [ ] .7 Texturing: buffers, textures, surfaces, attributes and constants (uniforms)
-  - [ ] .8 Matrices and vectors, display of the movement, scaling and rotation matrices
-  - [ ] .9 Vertex texture animation, morphing
-  - [ ] .10 Sound output principle, the mixer
-  - [ ] .11 Audio formats, codecs, containers and effects
+  - [ ] _4 Input: keyboard, mouse, gamepad, joystick, device emulation
+  - [ ] _5 OpenGL ES2.0: Initialization, extensions, getting function pointers
+  - [ ] _6 Primitive rasterization, vertex shader, fragment shader
+  - [ ] _7 Texturing: buffers, textures, surfaces, attributes and constants (uniforms)
+  - [ ] _8 Matrices and vectors, display of the movement, scaling and rotation matrices
+  - [ ] _9 Vertex texture animation, morphing
+  - [ ] _10 Sound output principle, the mixer
+  - [ ] _11 Audio formats, codecs, containers and effects
 - [ ] **002 GAME PROTOTYPE**
-  - [ ] .1 Full-scale prototyping
-  - [ ] .2 Writing UML, class diagrams
-  - [ ] .3 Development of the main algorithm
-  - [ ] .4 Collision detection
-  - [ ] .5 Development of data formats (scene, levels, objects, etc.)
-  - [ ] .6 Loading and reloading the game (levels). Debugging, tricks to make development easier
+  - [ ] _1 Full-scale prototyping
+  - [ ] _2 Writing UML, class diagrams
+  - [ ] _3 Development of the main algorithm
+  - [ ] _4 Collision detection
+  - [ ] _5 Development of data formats (scene, levels, objects, etc.)
+  - [ ] _6 Loading and reloading the game (levels). Debugging, tricks to make development easier
 - [ ] **003 GAME EDITOR**
-  - [ ] .1 Adding ImGui
-  - [ ] .2 Level editor
-  - [ ] .3 Object editor
-  - [ ] .4 Screen editor
-  - [ ] .5 Creation of multiple levels and a finished game
-  - [ ] .6 Loading and reloading the game (levels). Debugging, tricks to make development easier
+  - [ ] _1 Adding ImGui
+  - [ ] _2 Level editor
+  - [ ] _3 Object editor
+  - [ ] _4 Screen editor
+  - [ ] _5 Creation of multiple levels and a finished game
+  - [ ] _6 Loading and reloading the game (levels). Debugging, tricks to make development easier
 - [ ] **004 Porting the game to Android OS**
-  - [ ] .1 Installing and configuring Android Strudio
-  - [ ] .2 Changing file uploads
-  - [ ] .3 Parse the AndroidManifest.xml
-  - [ ] .4 Adding a new type of control (touch) to the game
+  - [ ] _1 Installing and configuring Android Strudio
+  - [ ] _2 Changing file uploads
+  - [ ] _3 Parse the AndroidManifest.xml
+  - [ ] _4 Adding a new type of control (touch) to the game
 
 <!--
 * [*001.2_CppHelloWorld_std17*][CppGameDev_1]
@@ -61,4 +78,18 @@
 [CppGameDev_4]: https://github.com/yoricsv/001_2_CppHWRandNumber_std17-O2.git
 [CppGameDev_5]: https://github.com/yoricsv/001_3_CppScanfAnalogue.git
 [CppGameDev_6]: https://github.com/yoricsv/000_CppClassGame.git
-[CppGameDev_7]: https://github.com/yoricsv/_CPP_GAME_DEVELOPMENT_/tree/master/003_1_CppOpenGL
+[CppGameDev_7]: 003_1_CppOpenGL
+
+[CMake]: https://github.com/yoricsv/_CPP_GAME_DEVELOPMENT_/tree/master/002_CppCMake
+[stp1]:  https://github.com/yoricsv/_CPP_GAME_DEVELOPMENT_/tree/master/002_CppCMake/002_1_BasicStartingPoint
+[stp2]:  https://github.com/yoricsv/_CPP_GAME_DEVELOPMENT_/tree/master/002_CppCMake/002_2_AddingLibrary
+[stp3]:  https://github.com/yoricsv/_CPP_GAME_DEVELOPMENT_/tree/master/002_CppCMake/002_3_UsageReqForLib
+[stp4]:  https://github.com/yoricsv/_CPP_GAME_DEVELOPMENT_/tree/master/002_CppCMake/002_4_InstallAndTest
+[stp5]:  https://github.com/yoricsv/_CPP_GAME_DEVELOPMENT_/tree/master/002_CppCMake/002_5_SysIntrospection
+[stp6]:  https://github.com/yoricsv/_CPP_GAME_DEVELOPMENT_/tree/master/002_CppCMake/002_6_ComFileGen
+[stp7]:  https://github.com/yoricsv/_CPP_GAME_DEVELOPMENT_/tree/master/002_CppCMake/002_7_BuildInstall
+[stp8]:  https://github.com/yoricsv/_CPP_GAME_DEVELOPMENT_/tree/master/002_CppCMake/002_8_Dashboard
+[stp9]:  https://github.com/yoricsv/_CPP_GAME_DEVELOPMENT_/tree/master/002_CppCMake/002_9_StaticShared
+[stp10]: https://github.com/yoricsv/_CPP_GAME_DEVELOPMENT_/tree/master/002_CppCMake/002_10_GenExpression
+[stp11]: https://github.com/yoricsv/_CPP_GAME_DEVELOPMENT_/tree/master/002_CppCMake/002_11_ExportConfig
+[stp12]: https://github.com/yoricsv/_CPP_GAME_DEVELOPMENT_/tree/master/002_CppCMake/002_12_PackDebRel
