@@ -58,12 +58,12 @@ target_include_directories(
 include(CheckSymbolExists)
 check_symbol_exists(
    log
-      "math.h"
+      math.h
    HAVE_LOG
 )
 check_symbol_exists(
    exp
-      "math.h"
+      math.h
    HAVE_EXP
 )
 if(NOT (HAVE_LOG AND HAVE_EXP))
@@ -76,16 +76,16 @@ if(NOT (HAVE_LOG AND HAVE_EXP))
          CACHE
    )
 
-   set(CMAKE_REQUIRED_LIBRARIES "m")
+   set(CMAKE_REQUIRED_LIBRARIES m)
 
    check_symbol_exists(
       log
-         "math.h"
+         math.h
       HAVE_LOG
    )
    check_symbol_exists(
       exp
-         "math.h"
+         math.h
       HAVE_EXP
    )
    if(HAVE_LOG AND HAVE_EXP)
@@ -100,6 +100,15 @@ endif()
 
 If available, use `target_compile_definitions()` to specify `HAVE_LOG` and `HAVE_EXP` as `PRIVATE` compile definitions.
 
+If we know that the target platform have `log` and `exp` we can add next code to *TutorialConfig.h.in* manually 
+
+```cpp
+// does the platform provide exp and log functions?
+// [OPTIONAL] not necessary
+#cmakedefine HAVE_LOG
+#cmakedefine HAVE_EXP
+```
+
 ### MathFunctions/CMakeLists.txt
 
 ```cmake
@@ -107,8 +116,8 @@ if(HAVE_LOG AND HAVE_EXP)
    target_compile_definitions(
          MathFunctions
       PRIVATE
-         "HAVE_LOG"
-         "HAVE_EXP"
+         HAVE_LOG
+         HAVE_EXP
    )
 endif()
 ```
