@@ -21,8 +21,8 @@ int main (int argc, char * argv[])
     std::cout << "Enter a number: ";
     std::cin  >> input_value;
 
-#ifdef USE_MYMATH
-    const double result = mysqrt(input_value);
+#ifdef USE_MY_MATH
+    const double result = my_sqrt(input_value);
 #else
     const double result = sqrt(input_value);
 #endif

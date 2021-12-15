@@ -2,7 +2,7 @@
 
 double my_sqrt(double input_value)
 {
-    double result = 0;
+    double result;
 
 #if defined(HAVE_LOG) && defined(HAVE_EXP)
    result = exp(log(input_value) * 0.5);
@@ -12,7 +12,7 @@ double my_sqrt(double input_value)
              << " using log and exp"
              << std::endl;
 #else
-    if(input_value < 0.0)
+    if(input_value < 0)
     {
         std::cerr << "Error! Can't figure out the square root."
                   << "Your number less than zero."
@@ -21,12 +21,12 @@ double my_sqrt(double input_value)
         return std::cerr.good() ? EXIT_SUCCESS : EXIT_FAILURE;
     }
 
-    if(input_value == 1.0)
+    if(input_value == 1)
     {
-        return 1.0;
+        return 1;
     }
 
-
+    result = input_value / 2;
 
     while(std::abs(input_value - result * result ) >= 0.001)
     {
