@@ -1,10 +1,21 @@
 cmake_minimum_required(VERSION 3.20)
-project(Game)
 
-set(CMAKE_CXX_STANDARD 17)
+    set(PROJECT_NAME
+            OpenGLGame
+    )
+project(${PROJECT_NAME})
 
-add_executable(Game main.cpp)
+    set(CMAKE_CXX_STANDARD      17)
 
-add_subdirectory(Engine)
+add_executable(
+    ${PROJECT_NAME}
+        main.cpp
+)
 
-target_link_libraries(Game Engine)
+add_subdirectory(engine)
+
+# add SDL2 Library
+target_link_libraries(
+    ${PROJECT_NAME}
+        GameEngine
+)

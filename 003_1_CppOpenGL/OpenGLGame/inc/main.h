@@ -1,6 +1,6 @@
 #pragma once
-#ifndef OPENGLGAME_MAIN_H
-#define OPENGLGAME_MAIN_H
+#ifndef OPENGL_GAME_MAIN_H
+#define OPENGL_GAME_MAIN_H
 
 #include <cstdio>
 #include <Engine.h>
@@ -28,4 +28,4 @@
 //    return write(STDOUT_FILENO, str, getStringLength(str));
 //}
 
-#endif //OPENGLGAME_MAIN_H
+#endif //OPENGL_GAME_MAIN_H

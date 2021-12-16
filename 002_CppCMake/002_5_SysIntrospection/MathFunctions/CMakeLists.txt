@@ -56,19 +56,19 @@ if(NOT (HAVE_LOG AND HAVE_EXP))
 
     # If everything is OK add m Library to the project
     if(HAVE_LOG AND HAVE_EXP)
-#        target_link_libraries(
-#                MathFunctions
-#            PRIVATE
-#                m                           # add m library for log/exp
-#        )
-
-        # [OPTIONAL] IF AVAILABLE, try to use it instead previous one
-        target_compile_definitions(
+        target_link_libraries(
                 MathFunctions
             PRIVATE
-                HAVE_LOG
-                HAVE_EXP
+                m                           # add m library for log/exp
         )
+
+        # [OPTIONAL] IF AVAILABLE, try to use it instead previous one
+#        target_compile_definitions(
+#                MathFunctions
+#            PRIVATE
+#                HAVE_LOG
+#                HAVE_EXP
+#        )
     endif()
 endif()
 

@@ -23,9 +23,9 @@
     - [X] **Step 4**: [Installing and Testing][stp4]
       - [X] *Install Rules*
       - [X] *Testing Support*
-    - [ ] **Step 5**: [Adding System Introspection][stp5]
-    - [ ] **Step 6**: [Adding a Custom Command and Generated File][stp6]
-    - [ ] **Step 7**: [Packaging an Installer][stp7]
+    - [X] **Step 5**: [Adding System Introspection][stp5]
+    - [X] **Step 6**: [Adding a Custom Command and Generated File][stp6]
+    - [X] **Step 7**: [Packaging an Installer][stp7]
     - [ ] **Step 8**: [Adding Support for a Testing Dashboard][stp8]
     - [ ] **Step 9**: [Selecting Static or Shared Libraries][stp9]
     - [ ] **Step 10**: [Adding Generator Expressions][stp10]

@@ -48,7 +48,6 @@ target_include_directories(
         ${PROJECT_BINARY_DIR}                           # will find TutorialConfig.h
 )
 
-# add rules to install the application with library and header files
 install(
     TARGETS
         Tutorial
@@ -62,11 +61,8 @@ install(
         include                                         # output folder where will placed configured header files
 )
 
-# enable testing to check the application is working correctly
 enable_testing()
 
-# add the first simply test to verify that the application run
-# and nothing segfault or otherwise crash
 add_test(
     NAME
         Runs
@@ -74,9 +70,6 @@ add_test(
         Tutorial 25
 )
 
-# add the next one to verify that the output of the test
-# contains certain strings
-# [REMARK] printout when an incorrect number of arguments are provided
 add_test(
     NAME
         Usage
@@ -90,8 +83,6 @@ set_tests_properties(
             "Usage:.*number"
 )
 
-# add the function DO_TEST that runs the application and
-# verifies that the computed square root is correct for given input
 function(
     do_test
         target arg
@@ -112,7 +103,6 @@ function(
     )
 endfunction()
 
-# add the number of basic tests to verify
 do_test(
     Tutorial 4
         "4 is 2"
