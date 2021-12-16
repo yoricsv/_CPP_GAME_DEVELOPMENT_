@@ -1,6 +1,6 @@
+#include <cmath>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
 
 int main (int argc, char *argv[])
 {
@@ -14,24 +14,33 @@ int main (int argc, char *argv[])
     }
 
     // open the output file
-    FILE * fout = fopen(argv[1],"w");
-    if (!fout)
+    FILE * ptrFile =
+        fopen(
+            argv[1],
+            "w"
+        );
+
+    if (!ptrFile)
     {
-        return 1;
+        perror("Error! Can't open the file: ");
+        return EXIT_FAILURE;
     }
 
     // create a source file with a table of square roots
-    fprintf(fout, "double sqrtTable[] = {\n");
+    fprintf(
+        ptrFile,
+        "double sqrtTable[] = {\n"
+    );
 
     for (   i = 0;
             i < 10;
-            ++i
+            i++
         )
     {
         result = sqrt(static_cast<double> (i));
 
         fprintf(
-            fout,
+            ptrFile,
             "%g,\n",
             result
         );
@@ -39,11 +48,11 @@ int main (int argc, char *argv[])
 
     // close the table with a zero
     fprintf(
-        fout,
+        ptrFile,
         "0};\n"
     );
 
-    fclose(fout);
+    fclose(ptrFile);
 
-    return 0;
+    return EXIT_SUCCESS;
 }

@@ -1,5 +1,7 @@
 #include "MathFunctions.h"
 
+#include "Table.h"              // IMPORTANT!!! Including generated files in the header will inhibit them being searched
+
 double my_sqrt(double input_value)
 {
     if(input_value < 0)
@@ -24,7 +26,8 @@ double my_sqrt(double input_value)
     // use the table to help find an initial value
     double result = input_value;
 
-    if (input_value >= 1 && input_value < 10)
+    if (   input_value >= 1
+        && input_value <  10)
     {
         std::cout << "Use the table to help find an initial value " << std::endl;
 

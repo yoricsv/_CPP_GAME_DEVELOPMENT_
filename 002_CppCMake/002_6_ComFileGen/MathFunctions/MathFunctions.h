@@ -4,7 +4,6 @@
 
 #include <cmath>
 #include <iostream>
-#include "Table.h"
 
 double my_sqrt(double input_value);
 
