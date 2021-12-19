@@ -26,6 +26,6 @@ private:
     struct Pimpl;
 
     std::unique_ptr<Pimpl> _pimpl;
-}
+};
 
 #endif // ENGINE_H

@@ -48,32 +48,32 @@ The first step is to update our `install(TARGETS)` commands to not only specify 
 ### MathFunctions/CMakeLists.txt
 
 ```cmake
-set(
-   installable_libs
-      MathFunctions
-   tutorial_compiler_flags
-)
+    set(
+        INSTALLABLE_LIBS
+            MathFunctions
+            tutorial_compiler_flags
+    )
 if(TARGET SqrtLibrary)
-   list(
-      APPEND
-         installable_libs
-         SqrtLibrary
-   )
+    list(
+        APPEND
+           INSTALLABLE_LIBS
+                SqrtLibrary
+    )
 endif()
 install(
-   TARGETS
-      ${installable_libs}
-   DESTINATION
-      lib
-   EXPORT
-      MathFunctionsTargets
+    TARGETS
+        ${INSTALLABLE_LIBS}
+    DESTINATION
+        lib
+    EXPORT
+        MathFunctionsTargets
 )
 
 install(
-   FILES
-      MathFunctions.h
-   DESTINATION
-      include
+    FILES
+        MathFunctions.h
+    DESTINATION
+        include
 )
 ```
 

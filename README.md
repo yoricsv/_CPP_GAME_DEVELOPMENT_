@@ -13,7 +13,7 @@
   - [X] **RESULT:** Application [*001.2_CppHelloWorld_std17-O2*][CppGameDev_3]
   - [ ] **RESULT:** Application [*001.2_CppHWRandNumber_std17-O2*][CppGameDev_4]
   - [ ] **RESULT:** Application [*001.3_CppHWScanfAnalogue*][CppGameDev_5]
-  - [ ] _2 [CMake][CMake]
+  - [X] _2 [CMake][CMake]
     - [X] **Step 1**: [A Basic Starting Point Build and Run][stp1]
       - [X] *Adding a Version Number and Configured Header File*
       - [X] *Specify the C++ Standard*
@@ -26,11 +26,11 @@
     - [X] **Step 5**: [Adding System Introspection][stp5]
     - [X] **Step 6**: [Adding a Custom Command and Generated File][stp6]
     - [X] **Step 7**: [Packaging an Installer][stp7]
-    - [ ] **Step 8**: [Adding Support for a Testing Dashboard][stp8]
-    - [ ] **Step 9**: [Selecting Static or Shared Libraries][stp9]
-    - [ ] **Step 10**: [Adding Generator Expressions][stp10]
-    - [ ] **Step 11**: [Adding Export Configuration][stp11]
-    - [ ] **Step 12**: [Packaging Debug and Release][stp12]
+    - [X] **Step 8**: [Adding Support for a Testing Dashboard][stp8]
+    - [X] **Step 9**: [Selecting Static or Shared Libraries][stp9]
+    - [X] **Step 10**: [Adding Generator Expressions][stp10]
+    - [X] **Step 11**: [Adding Export Configuration][stp11]
+    - [X] **Step 12**: [Packaging Debug and Release][stp12]
   - [ ] _3 Main game loop
   - [ ] **RESULT:** Application [*000_CppClassGame*][CppGameDev_6]
   - [ ] **RESULT:** Application [*003.1_CppOpenGL*][CppGameDev_7]

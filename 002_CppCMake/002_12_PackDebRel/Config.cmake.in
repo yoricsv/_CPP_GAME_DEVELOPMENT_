@@ -1,0 +1,5 @@
+# next commands needs to generate a MathFunctionsConfig.cmake
+# and the CMake find_package() command can find our project
+@PACKAGE_INIT@
+
+include(${CMAKE_CURRENT_LIST_DIR}/${INCLUDE_LIBRARY_NAME}Targets.cmake)
