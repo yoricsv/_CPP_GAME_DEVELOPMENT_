@@ -1,6 +1,11 @@
 #include <iostream>
+#include "Engine.h"
 
 int main(int argc, char *argv[])
 {
-    return 0;
+
+    Engine engine{};
+    engine.init();
+
+    return EXIT_SUCCESS;
 }

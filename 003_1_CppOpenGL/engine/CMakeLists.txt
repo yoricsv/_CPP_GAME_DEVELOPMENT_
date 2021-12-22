@@ -69,7 +69,7 @@ find_library(
 #GLEW
 #find_package(GLEW   REQUIRED)      # DON'T USE IT FOR SOURCE CODE (ONLY FOR BINARY)!
     set(
-        GLEW_LIB
+        GLEW_LIB_DIR
             ${CMAKE_CURRENT_SOURCE_DIR}/libs/GLEW
     )
     set(
@@ -78,7 +78,7 @@ find_library(
     )
 
 add_subdirectory(
-    ${GLEW_LIB}
+    ${GLEW_LIB_DIR}
 )
     set(
         CMAKE_CXX_FLAGS
@@ -89,17 +89,15 @@ add_subdirectory(
             "${CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS} -static-libgcc -static-libstdc++ -s"
     )
 
-add_definitions(
-    -mwindows ${GLEW_LIB} -lmingw32 ${OPENGL_LIBRARIES}
-)
-
 target_link_libraries(
         ${PROJECT_NAME}
     PRIVATE
         ${SDL2MAIN_LIBRARY}
         ${SDL2_LIBRARY}
-        ${OPENGL_LIBRARY}
-        ${GLEW_LIBRARY}
+#        ${OPENGL_LIBRARY}
+#        ${GLEW_LIBRARY}
+        "-lmingw32 ${OPENGL_LIBRARY}"
+        "-mwindows ${GLEW_LIBRARY}"
 )
 
 target_include_directories(
