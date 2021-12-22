@@ -7,12 +7,6 @@ project(${PROJECT_NAME})
 
     set(CMAKE_CXX_STANDARD  17)
 
-# add requirement of SDL2
-#find_package(SDL2   REQUIRED)           # IMPORTANT -> DON'T USE IT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-# add SDL2 include directory
-include_directories(${SDL2_INCLUDE_DIRS})
-
 add_library(
     ${PROJECT_NAME}
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Engine.cpp
@@ -48,6 +42,8 @@ add_library(
 )
 
 #SDL
+#find_package(SDL2 REQUIRED)      # DON'T USE IT FOR SOURCE CODE (ONLY FOR BINARY)!
+
 if (NOT IOS)
     add_subdirectory(
         ${CMAKE_CURRENT_SOURCE_DIR}/libs/SDL2
@@ -60,11 +56,41 @@ if (NOT IOS)
         )
 endif()
 
-find_package(OpenGL REQUIRED)           # IMPORTANT -> REQUIRED TO USE OpenGL
+
+#OpenGL
+find_package(OpenGL REQUIRED)
 
 find_library(
     OPENGL_LIBRARY
         OpenGL
+)
+
+
+#GLEW
+#find_package(GLEW   REQUIRED)      # DON'T USE IT FOR SOURCE CODE (ONLY FOR BINARY)!
+    set(
+        GLEW_LIB
+            ${CMAKE_CURRENT_SOURCE_DIR}/libs/GLEW
+    )
+    set(
+        GLEW_LIBRARY
+            libglew_static
+    )
+
+add_subdirectory(
+    ${GLEW_LIB}
+)
+    set(
+        CMAKE_CXX_FLAGS
+            "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++ -static"
+    )
+    set(
+        CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS
+            "${CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS} -static-libgcc -static-libstdc++ -s"
+    )
+
+add_definitions(
+    -mwindows ${GLEW_LIB} -lmingw32 ${OPENGL_LIBRARIES}
 )
 
 target_link_libraries(
@@ -73,6 +99,7 @@ target_link_libraries(
         ${SDL2MAIN_LIBRARY}
         ${SDL2_LIBRARY}
         ${OPENGL_LIBRARY}
+        ${GLEW_LIBRARY}
 )
 
 target_include_directories(
@@ -81,4 +108,5 @@ target_include_directories(
         ${CMAKE_CURRENT_SOURCE_DIR}/src
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/libs/SDL2/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/libs/GLEW/include
 )

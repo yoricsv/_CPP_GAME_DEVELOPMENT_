@@ -13,7 +13,7 @@ public:
     Engine() noexcept;
     ~Engine();
 
-    void init();
+    int init();
 //    {
 //        SDL_version version = { 0,0,0 };
 //
