@@ -11,39 +11,10 @@ add_library(
     ${PROJECT_NAME}
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Engine.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Engine.h
-#        src/Engine.hpp
-#        src/Window.hpp
-#        src/SDL/SdlWindow.cpp
-#        src/SDL/SdlWindow.hpp
-#        src/EventsManager.cpp
-#        src/Renderer.hpp
-#        src/SDL/SdlRenderer.cpp
-#        src/SDL/SdlRenderer.hpp
-#        src/Mesh.cpp
-#        src/Mesh.hpp
-#        src/ShaderProgram.hpp
-#        src/SDL/SdlMorphProgram.cpp
-#        src/SDL/SdlMorphProgram.hpp
-#        src/SDL/SdlShaderProgram.hpp
-#        src/Node.cpp
-#        src/Node.hpp
-#        src/MeshData.hpp
-#        src/SDL/SdlMesh.cpp
-#        src/SDL/SdlMesh.hpp
-#        src/GL/GlRenderer.cpp
-#        src/GL/GlRenderer.hpp
-#        src/GL/GlMesh.cpp
-#        src/GL/GlMesh.hpp
-#        src/GL/GlHeaders.hpp
-#        src/GL/GlProgram.hpp
-#        src/GL/GlMorphProgram.cpp
-#        src/GL/GlMorphProgram.hpp
-#        src/GL/GlProgram.cpp
 )
 
-#SDL
-#find_package(SDL2 REQUIRED)      # DON'T USE IT FOR SOURCE CODE (ONLY FOR BINARY)!
 
+#SDL_INCLUDE
 if (NOT IOS)
     add_subdirectory(
         ${CMAKE_CURRENT_SOURCE_DIR}/libs/SDL2
@@ -57,7 +28,22 @@ if (NOT IOS)
 endif()
 
 
-#OpenGL
+#GLEW_INCLUDE
+set(
+        GLEW_LIB_DIR
+        ${CMAKE_CURRENT_SOURCE_DIR}/libs/GLEW
+)
+set(
+        GLEW_LIBRARY
+        libglew_static
+)
+
+add_subdirectory(
+        ${GLEW_LIB_DIR}
+)
+
+
+#OpenGL_INCLUDE
 find_package(OpenGL REQUIRED)
 
 find_library(
@@ -66,38 +52,13 @@ find_library(
 )
 
 
-#GLEW
-#find_package(GLEW   REQUIRED)      # DON'T USE IT FOR SOURCE CODE (ONLY FOR BINARY)!
-    set(
-        GLEW_LIB_DIR
-            ${CMAKE_CURRENT_SOURCE_DIR}/libs/GLEW
-    )
-    set(
-        GLEW_LIBRARY
-            libglew_static
-    )
-
-add_subdirectory(
-    ${GLEW_LIB_DIR}
-)
-#    set(
-#        CMAKE_CXX_FLAGS
-#            "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++ -static"
-#    )
-#    set(
-#        CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS
-#            "${CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS} -static-libgcc -static-libstdc++ -s"
-#    )
-
 target_link_libraries(
         ${PROJECT_NAME}
     PRIVATE
         ${SDL2MAIN_LIBRARY}
         ${SDL2_LIBRARY}
-        ${OPENGL_LIBRARY}
         ${GLEW_LIBRARY}
-#        "-lmingw32 ${OPENGL_LIBRARY}"
-#        "-mwindows ${GLEW_LIBRARY}"
+        ${OPENGL_LIBRARY}
 )
 
 target_include_directories(

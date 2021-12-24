@@ -83,9 +83,3 @@ int Engine::init()
 }
 
 Engine::~Engine() = default; // for Windows
-
-
-// TODO:
-//    Uint32  windows_flags = SDL_WINDOW_SHOWN;
-//    if(_renderer_mode == Render)
-

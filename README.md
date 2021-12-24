@@ -1,7 +1,7 @@
 # _CPP_GAME_DEVELOPMENT_
 # LEARN C++ (GAME DEVELOPMENT)
 
-> ***NOTE***: "C++ GAME DEVELOPMENT PROFFESSIONAL" *(Start 10-nov-2021)*
+> ***NOTE***: "C++ GAME DEVELOPMENT PROFESSIONAL" *(Start 10-nov-2021)*
 
 > ***NOTE***: I don't mark topics without a description (READMEs).
 ### COURSE CONTENT
@@ -31,12 +31,12 @@
     - [X] **Step 10**: [Adding Generator Expressions][stp10]
     - [X] **Step 11**: [Adding Export Configuration][stp11]
     - [X] **Step 12**: [Packaging Debug and Release][stp12]
-  - [ ] _3 Main game loop
+  - [X] _3 Main game loop
   - [ ] **RESULT:** Application [*000_CppClassGame*][CppGameDev_6]
-  - [ ] **RESULT:** Application [*003.1_CppOpenGL*][CppGameDev_7]
+  - [X] **RESULT:** Application [*003.1_CppOpenGL*][CppGameDev_7]
   - [ ] _4 Input: keyboard, mouse, gamepad, joystick, device emulation
   - [ ] _5 OpenGL ES2.0: Initialization, extensions, getting function pointers
-  - [ ] _6 Primitive rasterization, vertex shader, fragment shader
+  - [ ] _6 Primitive rasteurization, vertex shader, fragment shader
   - [ ] _7 Texturing: buffers, textures, surfaces, attributes and constants (uniforms)
   - [ ] _8 Matrices and vectors, display of the movement, scaling and rotation matrices
   - [ ] _9 Vertex texture animation, morphing
