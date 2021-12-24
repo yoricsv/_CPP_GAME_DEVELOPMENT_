@@ -14,11 +14,11 @@ Engine::Engine()
 
 int Engine::init()
 {
-//    if (!SDL_Init(SDL_INIT_EVERYTHING))
-//    {
-//        SDL_Log("Unable to initialize SDL: %s", SDL_GetError());
-//        return EXIT_FAILURE;
-//    }
+    if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
+    {
+        SDL_Log("Unable to initialize SDL: %s", SDL_GetError());
+        return EXIT_FAILURE;
+    }
 
     SDL_Init(SDL_INIT_EVERYTHING);
 
@@ -29,18 +29,17 @@ int Engine::init()
             SDL_WINDOWPOS_UNDEFINED,
             640,
             480,
-//            0 |
-//            SDL_WINDOW_ALLOW_HIGHDPI |
-//            SDL_WINDOW_OPENGL |
-            SDL_WINDOW_SHOWN
-
+            0 |
+                SDL_WINDOW_ALLOW_HIGHDPI |
+                SDL_WINDOW_OPENGL |
+                SDL_WINDOW_SHOWN
         );
 
-//    if (!window)
-//    {
-//        printf("Could not create window: %s\n", SDL_GetError());
-//        return EXIT_FAILURE;
-//    }
+    if (!window)
+    {
+        printf("Could not create window: %s\n", SDL_GetError());
+        return EXIT_FAILURE;
+    }
 
     bool keep_window_open = true;
 

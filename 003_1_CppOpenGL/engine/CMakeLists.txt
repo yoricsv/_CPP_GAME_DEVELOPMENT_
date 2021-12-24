@@ -80,24 +80,24 @@ find_library(
 add_subdirectory(
     ${GLEW_LIB_DIR}
 )
-    set(
-        CMAKE_CXX_FLAGS
-            "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++ -static"
-    )
-    set(
-        CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS
-            "${CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS} -static-libgcc -static-libstdc++ -s"
-    )
+#    set(
+#        CMAKE_CXX_FLAGS
+#            "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++ -static"
+#    )
+#    set(
+#        CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS
+#            "${CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS} -static-libgcc -static-libstdc++ -s"
+#    )
 
 target_link_libraries(
         ${PROJECT_NAME}
     PRIVATE
         ${SDL2MAIN_LIBRARY}
         ${SDL2_LIBRARY}
-#        ${OPENGL_LIBRARY}
-#        ${GLEW_LIBRARY}
-        "-lmingw32 ${OPENGL_LIBRARY}"
-        "-mwindows ${GLEW_LIBRARY}"
+        ${OPENGL_LIBRARY}
+        ${GLEW_LIBRARY}
+#        "-lmingw32 ${OPENGL_LIBRARY}"
+#        "-mwindows ${GLEW_LIBRARY}"
 )
 
 target_include_directories(
