@@ -1,9 +1,10 @@
 # _CPP_GAME_DEVELOPMENT_
+
 # LEARN C++ (GAME DEVELOPMENT)
 
 > ***NOTE***: "C++ GAME DEVELOPMENT PROFESSIONAL" *(Start 10-nov-2021)*
-
 > ***NOTE***: I don't mark topics without a description (READMEs).
+
 ### COURSE CONTENT
 
 - [ ] **001 MICRO ENGINE**:
@@ -35,7 +36,21 @@
   - [ ] **RESULT:** Application [*000_CppClassGame*][CppGameDev_6]
   - [X] **RESULT:** Application [*003.1_CppOpenGL*][CppGameDev_7]
   - [ ] _4 Input: keyboard, mouse, gamepad, joystick, device emulation
-  - [ ] _5 OpenGL ES2.0: Initialization, extensions, getting function pointers
+  - [ ] _5 OpenGL: (*ES2.0: Initialization, extensions, getting function pointers*)
+    - [X] [**How OpenGL works**: (*Software rendering*)][5_OpenGL]
+    - [ ] **OpenGL Step 1**: [Bresenham’s Line Drawing Algorithm][OGLstp1]
+    - [ ] **OpenGL Step 2**: [Triangle rasterization and back face culling][OGLstp2]
+    - [ ] **OpenGL Step 3**: [Hidden faces removal (z-buffer)][OGLstp3]
+    - [ ] **OpenGL Step 4**: [Perspective projection][OGLstp4]
+    - [ ] **OpenGL Step 5**: [Moving the camera][OGLstp5]
+    - [ ] **OpenGL Step 6**: [Shaders for the software renderer][OGLstp6]
+    - [ ] **OpenGL Step 7**: [Tangent space normal mapping][OGLstp7]
+    - [ ] **OpenGL Step 8**: [Shadow mapping][OGLstp8]
+    - [ ] **OpenGL Step 9**: [Ambient occlusion][OGLstp9]
+    - [ ] **OpenGL Step 10**: [Real OpenGL (GLSL) application][OGLstp10]
+    - [ ] **OpenGL Step 11**: [Technical difficulties: Vectors and Matrices classes][OGLstp11]
+    - [ ] **OpenGL Step 12**: [Technical difficulties: linear interpolation with perspective deformations][OGLstp12]
+    - [ ] **OpenGL Step 13**: [Visual troubleshooting][OGLstp13]
   - [ ] _6 Primitive rasteurization, vertex shader, fragment shader
   - [ ] _7 Texturing: buffers, textures, surfaces, attributes and constants (uniforms)
   - [ ] _8 Matrices and vectors, display of the movement, scaling and rotation matrices
@@ -92,3 +107,17 @@
 [stp10]:        002_CppCMake/002_10_GenExpression
 [stp11]:        002_CppCMake/002_11_ExportConfig
 [stp12]:        002_CppCMake/002_12_PackDebRel
+[5_OpenGL]:     005_CppOwnOpenGLAnalogue_/README.md
+[OGLstp1]:      005_CppOwnOpenGLAnalogue_/005_1_BresenhamAlgorithm
+[OGLstp2]:      005_CppOwnOpenGLAnalogue_/005_2_TrialgleRasterization
+[OGLstp3]:      005_CppOwnOpenGLAnalogue_/005_3_Z-buffer
+[OGLstp4]:      005_CppOwnOpenGLAnalogue_/005_4_PerspectiveProjection
+[OGLstp5]:      005_CppOwnOpenGLAnalogue_/005_5_MovingCamera
+[OGLstp6]:      005_CppOwnOpenGLAnalogue_/005_6_SoftwareShadersRendering
+[OGLstp7]:      005_CppOwnOpenGLAnalogue_/005_7_TangentSpaceMapping
+[OGLstp8]:      005_CppOwnOpenGLAnalogue_/005_8_ShadowMapping
+[OGLstp9]:      005_CppOwnOpenGLAnalogue_/005_9_AmbientOcclusion
+[OGLstp10]:     005_CppOwnOpenGLAnalogue_/005_10_OpenGL(GLSL)Application
+[OGLstp11]:     005_CppOwnOpenGLAnalogue_/005_11_VectorsAndMatricesClasses
+[OGLstp12]:     005_CppOwnOpenGLAnalogue_/005_12_LinearInterpolation
+[OGLstp13]:     005_CppOwnOpenGLAnalogue_/005_13_VisualTroubleshooting

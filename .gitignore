@@ -6,6 +6,9 @@
 # MY OWN Temporary
 .TEMPORARY/
 
+# A new project that I'm hesitating now
+005_CppOwnOpenGLAnalogue_/ 
+
 # CLion setting folder
 .settings/
 
